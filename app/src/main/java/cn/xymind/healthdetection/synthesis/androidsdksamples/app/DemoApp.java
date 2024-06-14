@@ -2,14 +2,16 @@ package cn.xymind.healthdetection.synthesis.androidsdksamples.app;
 
 import android.app.Application;
 
-import com.alibaba.android.mnnkit.utils.Constants;
 import com.tencent.mmkv.MMKV;
 
-import cn.xymind.measurementsdk.bean.IMeasurementConfig;
-import cn.xymind.measurementsdk.bean.MeasurementConfig;
+
+import cn.xiaoyang.measurement.abstraction.Category;
+import cn.xymind.measurementsdk.config.IMeasurementConfig;
+import cn.xymind.measurementsdk.config.MeasurementConfig;
 import cn.xymind.measurementsdk.enums.ServiceType;
 import cn.xymind.measurementsdk.facelandmarker.FaceLandmarkerHelper;
 import cn.xymind.measurementsdk.facelandmarker.InitCallback;
+import cn.xymind.measurementsdk.util.Constants;
 import cn.xymind.measurementsdk.util.MyLog;
 
 public class DemoApp extends Application {
@@ -21,10 +23,10 @@ public class DemoApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-
-        MMKV.initialize(this);
-        config = new MeasurementConfig(getApplicationContext(), "3a12dfa8e04354567abadae17842e617", "3a12dfa8e0436cd26887f41069321b4e", ServiceType.PUBLIC.getValue());
-
+        config = new MeasurementConfig(getApplicationContext(), "id", "key", ServiceType.PUBLIC.getValue());
+        config.setMinMeasurementDuration(15000);
+        config.setMinFramesCnt(257);
+        config.setMeasurementCategory(Category.MeasurementCategory.All);
 
         initFace();
     }
@@ -36,13 +38,13 @@ public class DemoApp extends Application {
                     @Override
                     public void onInitialized() {
 
-                        MyLog.d(Constants.TAG, "Mediapipe 初始化成功");
+                        MyLog.d(cn.xymind.measurementsdk.util.Constants.TAG, "Mediapipe 初始化成功");
 
                     }
 
                     @Override
                     public void onError(Exception e) {
-                        MyLog.d(Constants.TAG, "Mediapipe 初始化失败");
+                        MyLog.d(cn.xymind.measurementsdk.util.Constants.TAG, "Mediapipe 初始化失败");
                     }
                 });
             } catch (Exception e) {
