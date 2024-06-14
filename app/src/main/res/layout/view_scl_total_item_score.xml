@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#2788FE" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="SAS总分"
+            android:textColor="#ff1a1a1a"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <cn.xymind.healthdetection.synthesis.androidsdksamples.ScoreView
+        android:id="@+id/v_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:color_array="@array/sas_total_color_array"
+        app:inner_circle_bg_color="@color/inner_circle_bg_color"
+        app:inner_circle_dot_radius="6dp"
+        app:inner_circle_radius="90dp"
+        app:inner_circle_stroke_width="16dp"
+        app:outerText="true"
+        app:outer_circle_dot_radius="2dp"
+        app:outer_circle_radius="110dp"
+        app:outer_circle_score_text_color="@color/outer_circle_score_text_color"
+        app:outer_circle_score_text_size="12sp"
+        app:outer_circle_stroke_height="10dp"
+        app:outer_circle_stroke_width="2dp"
+        app:score_array="@array/sas_total_score_array"
+        app:score_text_size="40sp"
+        app:score_text_color="#1A1A1A"
+        app:score_unit_text_color="#E6EDF5"
+        app:score_unit_text_size="16sp"/>
+
+
+</merge>

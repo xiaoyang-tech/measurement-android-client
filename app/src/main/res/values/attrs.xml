@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentScoreView">
+        <attr name="left_title_text_size" format="dimension" />
+        <attr name="left_title_text_color" format="color" />
+        <attr name="left_title" format="string" />
+        <attr name="left_score_text_size" format="dimension" />
+        <attr name="line_margin_left" format="dimension" />
+        <attr name="line_height" format="dimension" />
+        <attr name="line_score_text_size" format="dimension" />
+        <attr name="line_score_text_color" format="color" />
+        <attr name="circle_radius" format="dimension" />
+        <attr name="circle_color" format="color" />
+        <attr name="circle_stroke_color" format="color" />
+        <attr name="circle_stroke_width" format="dimension" />
+        <attr name="underline_color" format="color" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ScoreView">
+        <attr name="enableAnim" format="boolean" />
+        <attr name="tooMany" format="boolean" />
+        <attr name="outerText" format="boolean" />
+        <attr name="score_array" format="reference" />
+        <attr name="color_array" format="reference" />
+
+        <attr name="outer_circle_stroke_width" format="dimension" />
+        <attr name="outer_circle_stroke_height" format="dimension" />
+        <attr name="outer_circle_radius" format="dimension" />
+        <attr name="outer_circle_dot_radius" format="dimension" />
+        <attr name="outer_circle_score_text_color" format="color" />
+        <attr name="outer_circle_score_text_size" format="dimension" />
+
+        <attr name="inner_circle_bg_color" format="color" />
+        <attr name="inner_circle_stroke_width" format="dimension" />
+        <attr name="inner_circle_radius" format="dimension" />
+        <attr name="inner_circle_dot_radius" format="dimension" />
+        <attr name="inner_circle_progress_bg_color" format="color" />
+
+        <attr name="score_text_color" format="color" />
+        <attr name="score_text_size" format="dimension" />
+        <attr name="score_unit_text_color" format="color" />
+        <attr name="score_unit_text_size" format="dimension" />
+
+    </declare-styleable>
+
+</resources>

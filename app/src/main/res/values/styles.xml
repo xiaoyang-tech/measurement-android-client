@@ -1,0 +1,73 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="KxAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="colorAccent">#33BDFD</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <style name="progressDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="fullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bg_actionbar</item>
+        <item name="colorPrimaryDark">@color/bg_actionbar</item>
+        <item name="colorAccent">@color/bg_actionbar</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="regist_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginTop">10dip</item>
+        <item name="android:textSize">15dip</item>
+    </style>
+
+
+
+    <style name="divider_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:background">#EFEFEF</item>
+    </style>
+
+
+
+
+    <style name="PhysiologyStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="circle_color">#fff</item>
+        <item name="circle_radius">6dp</item>
+        <item name="circle_stroke_color">#4D4D4D</item>
+        <item name="circle_stroke_width">1dp</item>
+        <item name="left_score_text_size">13sp</item>
+        <item name="left_title_text_color">#FF4D4D4D</item>
+        <item name="left_title_text_size">13sp</item>
+        <item name="line_height">8dp</item>
+        <item name="line_margin_left">105dp</item>
+        <item name="line_score_text_color">#999999</item>
+        <item name="line_score_text_size">12sp</item>
+        <item name="underline_color">@color/underline_color</item>
+    </style>
+
+    <style name="measure_result_mirror">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/shape_round_rectangle_background3</item>
+    </style>
+</resources>

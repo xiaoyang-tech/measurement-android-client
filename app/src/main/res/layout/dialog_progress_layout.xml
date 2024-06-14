@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog"
+    android:orientation="horizontal"
+    android:paddingBottom="16dip"
+    android:paddingLeft="20dip"
+    android:gravity="center"
+    android:paddingRight="20dip"
+    android:paddingTop="16dip" >
+
+    <View
+        android:id="@+id/progress"
+        android:layout_width="44dip"
+        android:layout_height="44dip"
+        android:layout_centerVertical="true"
+        android:background="@drawable/progress_spinner" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dip"
+        android:textColor="#3C3C3C"
+        android:textSize="15sp" />
+
+</LinearLayout>
