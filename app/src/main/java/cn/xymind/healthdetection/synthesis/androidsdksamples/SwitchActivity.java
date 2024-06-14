@@ -12,19 +12,17 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.mnnkit.entity.FaceDetectionReport;
-import com.alibaba.android.mnnkit.utils.Constants;
 import com.google.mediapipe.framework.image.BitmapImageBuilder;
 import com.google.mediapipe.framework.image.MPImage;
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.interfaces.OnCancelListener;
 import com.lxj.xpopup.interfaces.OnConfirmListener;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,24 +30,26 @@ import java.math.BigDecimal;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import cn.xiaoyang.measurement.abstraction.MeasurementReport;
+
 import cn.xymind.healthdetection.synthesis.androidsdksamples.app.DemoApp;
 import cn.xymind.measurement_sdk_plugin.camera1.Camera1Config;
 import cn.xymind.measurement_sdk_plugin.camera1.MeasurementCamera1;
 import cn.xymind.measurement_sdk_plugin.camera2.MeasurementCamera2;
-import cn.xymind.measurementsdk.bean.IMeasurementException;
-import cn.xymind.measurementsdk.bean.MeasurementRequiredData;
+import cn.xymind.measurement_sdk_plugin.strategy.CameraStrategy;
+import cn.xymind.measurement_sdk_plugin.view.AutoFitTextureView;
+import cn.xymind.measurementsdk.bean.ExceptionBean;
 import cn.xymind.measurementsdk.enums.CameraType;
 import cn.xymind.measurementsdk.enums.RecognitionType;
+import cn.xymind.measurementsdk.listener.FrameListener;
 import cn.xymind.measurementsdk.listener.IMeasurementListener;
-import cn.xymind.measurement_sdk_plugin.strategy.CameraStrategy;
 import cn.xymind.measurementsdk.strategy.FaceRecognitionStrategy;
 import cn.xymind.measurementsdk.strategy.MNNFaceRecognitionStrategy;
 import cn.xymind.measurementsdk.strategy.MediapipeFaceRecognitionStrategy;
 import cn.xymind.measurementsdk.util.ImageUtil;
 import cn.xymind.measurementsdk.util.MyLog;
-import cn.xymind.measurement_sdk_plugin.view.AutoFitTextureView;
+import cn.xymind.measurementsdk.util.Constants;
 
-public class SwitchActivity extends AppCompatActivity implements IMeasurementListener {
+public class SwitchActivity extends AppCompatActivity implements IMeasurementListener, FrameListener {
 
     private AutoFitTextureView texture_view;
 
@@ -76,6 +76,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
 
     private String measurementId;
 
+    //camera2\
 
     private CameraType cameraType;
     private RecognitionType recognitionType;
@@ -118,6 +119,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         testIv = this.findViewById(R.id.testIv);
         brightnessValueTv = this.findViewById(R.id.brightnessValueTv);
 
+
         progressDialog = new XProgressDialog(SwitchActivity.this);
         progressDialog.setCanceledOnTouchOutside(false);
     }
@@ -134,21 +136,26 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
                 break;
         }
         cameraStrategy.setSize(640, 480);
-        MeasurementRequiredData requiredData = new MeasurementRequiredData();
-        requiredData.setWeight(80);
-        requiredData.setHeight(170);
-        requiredData.setAge(30);
-        requiredData.setGender(1);
+        cameraStrategy.setFrameListener(this);
         switch (recognitionType) {
             case MNN:
-                faceRecognitionStrategy = new MNNFaceRecognitionStrategy(requiredData,DemoApp.config);
+                faceRecognitionStrategy = new MNNFaceRecognitionStrategy(DemoApp.config);
                 break;
             case MEDIAPIPE:
-                faceRecognitionStrategy = new MediapipeFaceRecognitionStrategy(requiredData,DemoApp.config, DemoApp.faceLandmarkerHelper);
+                faceRecognitionStrategy = new MediapipeFaceRecognitionStrategy(DemoApp.config, DemoApp.faceLandmarkerHelper);
                 break;
         }
 
-        faceRecognitionStrategy.setMeasurementListener(SwitchActivity.this);
+        faceRecognitionStrategy.setMeasurementListener(this);
+
+        //初始化测量工具
+        //必须线创建测量用户对象
+//        MeasurementRequiredData requiredData = new MeasurementRequiredData();
+//        requiredData.setWeight(80);
+//        requiredData.setHeight(170);
+//        requiredData.setAge(30);
+//        requiredData.setGender(1);
+
 
         scopeView.setMeasureTime(15);
         scopeView.setDurationSecs(15.0);
@@ -185,9 +192,6 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
                 isIncomingData = true;
                 scopeView.onMeasureStart(1);
 
-
-                cameraStrategy.setFrameListener((frameData, timestamp, width, height, displayOrientation) ->
-                        faceRecognitionStrategy.processFrame(frameData, timestamp, width, height, displayOrientation));
                 faceRecognitionStrategy.start();
 
 //                initSaveVideo();
@@ -233,10 +237,10 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         animatorSet.start();
     }
 
-    @Override
-    public void onFaceLandkarkers(float[] floats, int i, int i1) {
-
-    }
+//    @Override
+//    public void onFaceLandkarkers(float[] reports, int width, int height) {
+//        face_landmarks.setResult(reports, height, width);
+//    }
 
     @Override
     public void onCreated(String measurementId) {
@@ -244,9 +248,20 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         this.measurementId = measurementId;
     }
 
-    @Override
-    public void onFaceDetected(FaceDetectionReport[] faceDetectionReports, int i, int i1) {
+//    @Override
+//    public void onFaceDetected(FaceDetectionReport[] reports, int width, int height) {
+//
+//    }
 
+
+    @Override
+    public void onFrameAvailable(byte[] frameData, long timestamp, int width, int height, int displayOrientation) {
+//        byte[] bytes3 = ImageUtil.nv21ToBitmapBytes(frameData, width, height);
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes3, 0, bytes3.length);
+//
+//
+//        runOnUiThread(() -> testIv.setImageBitmap(bitmap));
+        faceRecognitionStrategy.processFrame(frameData, timestamp, width, height, displayOrientation);
     }
 
     @Override
@@ -256,10 +271,35 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
 
 
         runOnUiThread(() -> testIv.setImageBitmap(bitmap));
+
+        //保存视频帧
+        //width 视频宽
+        //height 视频高
+        //nv21 视频数据
+//        VideoRecorderUtil.getInstance().setWH(width, height, nv21);
+//        try {
+//            if (nv21 == null){
+//                MyLog.e(StringConstans.TAG,"nv21 is null");
+//            }
+//            if(videoFrameQueue == null){
+//
+//                MyLog.e(StringConstans.TAG,"videoFrameQueue is null");
+//            }
+//
+//            if(videoFrameQueue.size() > 1000){
+//
+//                MyLog.e(StringConstans.TAG,"videoFrameQueue size is " + videoFrameQueue.size());
+//            }
+//            videoWidth = width;
+//            videoHeight = height;
+//            videoFrameQueue.put(nv21);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @Override
-    public void onChunkProcessed(String measurementId, MeasurementReport.HrReport hrReport) {
+    public void chunkReportGenerated(String measurementId, MeasurementReport.HrReport hrReport) {
         runOnUiThread(() -> {
             if (!hrReport.hasData()) {
                 MyLog.e(Constants.TAG, "阶段性数据为空");
@@ -275,10 +315,10 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         });
     }
 
-    @Override
-    public void onDataCollected() {
-
-    }
+//    @Override
+//    public void onDataCollected() {
+//
+//    }
 
     @Override
     public void onFinished() {
@@ -296,19 +336,66 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
     }
 
     @Override
-    public void onReportProcessed(String measurementId, MeasurementReport.Report measurementReport) {
+    public void wholeReportGenerated(String measurementId, MeasurementReport.Report measurementReport) {
         try {
             runOnUiThread(() -> progressDialog.dismiss());
 
             MeasurementReport.HrReport hrReport = measurementReport.getHrReport();
             hrReport.getExplanation().getHrv().getAdvicesList();//建议集合
-            MeasurementReport.AfReport afReport = measurementReport.getAfReport();
-            MeasurementReport.Spo2hReport spo2HReport = measurementReport.getSpo2HReport();
+            MeasurementReport.SingleValueReport afReport = measurementReport.getAfReport();
+            MeasurementReport.SingleValueReport spo2HReport = measurementReport.getSpo2HReport();
             MeasurementReport.BpReport bpReport = measurementReport.getBpReport();
             MeasurementReport.EssentialReport essentialReport = measurementReport.getEssentialReport();
             MeasurementReport.RiskReport riskReport = measurementReport.getRiskReport();
-            MeasurementReport.HealthScoreReport healthScoreReport = measurementReport.getHealthScoreReport();
+            MeasurementReport.SingleValueReport healthScoreReport = measurementReport.getPhysiologyScoreReport();
 
+            //压力度报告
+            MeasurementReport.SingleValueReport calculatedReport = measurementReport.getMsiReport();
+            MyLog.d(Constants.TAG, "压力度报告code= " + calculatedReport.getCode());
+            MyLog.d(Constants.TAG, "压力度报告data= " + calculatedReport.getData());
+            MyLog.d(Constants.TAG, "压力度报告msg = " + calculatedReport.getMsg());
+            //综合心健康风险报告
+            MeasurementReport.SingleValueReport physiologyScoreReport = measurementReport.getPhysiologyScoreReport();
+            MyLog.d(Constants.TAG, "综合心健康风险报告code= " + physiologyScoreReport.getCode());
+            MyLog.d(Constants.TAG, "综合心健康风险报告data= " + physiologyScoreReport.getData());
+            MyLog.d(Constants.TAG, "综合心健康风险报告msg = " + physiologyScoreReport.getMsg());
+            //血压报告
+
+            //攻击性报告
+            MeasurementReport.SingleValueReport aggressivityReport = measurementReport.getAggressivityReport();
+            MyLog.d(Constants.TAG, "攻击性报告code= " + aggressivityReport.getCode());
+            MyLog.d(Constants.TAG, "攻击性报告data= " + aggressivityReport.getData());
+            MyLog.d(Constants.TAG, "攻击性报告msg = " + aggressivityReport.getMsg());
+
+            //焦虑度报告
+            MeasurementReport.SingleValueReport anxietyReport = measurementReport.getAnxietyReport();
+            MyLog.d(Constants.TAG, "焦虑度报告code= " + anxietyReport.getCode());
+            MyLog.d(Constants.TAG, "焦虑度报告data= " + anxietyReport.getData());
+            MyLog.d(Constants.TAG, "焦虑度报告msg = " + anxietyReport.getMsg());
+
+            //活力度报告
+            MeasurementReport.SingleValueReport vitalityReport = measurementReport.getVitalityReport();
+            MyLog.d(Constants.TAG, "活力度报告code= " + vitalityReport.getCode());
+            MyLog.d(Constants.TAG, "活力度报告data= " + vitalityReport.getData());
+            MyLog.d(Constants.TAG, "活力度报告msg = " + vitalityReport.getMsg());
+
+            //抑郁度报告
+            MeasurementReport.SingleValueReport suppressionReport = measurementReport.getSuppressionReport();
+            MyLog.d(Constants.TAG, "抑郁度报告code= " + suppressionReport.getCode());
+            MyLog.d(Constants.TAG, "抑郁度报告data= " + suppressionReport.getData());
+            MyLog.d(Constants.TAG, "抑郁度报告msg = " + suppressionReport.getMsg());
+
+            //疲劳度报告
+            MeasurementReport.SingleValueReport fatigueReport = measurementReport.getFatigueReport();
+            MyLog.d(Constants.TAG, "疲劳度报告code= " + fatigueReport.getCode());
+            MyLog.d(Constants.TAG, "疲劳度报告data= " + fatigueReport.getData());
+            MyLog.d(Constants.TAG, "疲劳度报告msg = " + fatigueReport.getMsg());
+
+            //情绪 report
+            MeasurementReport.SingleValueReport emotionReport = measurementReport.getEmotionScoreReport();
+            MyLog.d(Constants.TAG, "情绪data= " + emotionReport.getData());
+            MyLog.d(Constants.TAG, "情绪msg = " + emotionReport.getMsg());
+            MyLog.d(Constants.TAG, "情绪code= " + emotionReport.getCode());
 
             MeasureResult measureResult = new MeasureResult();
             measureResult.setMeasurementId(measurementId);
@@ -348,7 +435,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
                 } else {
                     MyLog.e(Constants.TAG, "房颤=" + afReport.getData());
                     MyLog.e(Constants.TAG, "房颤值：" + afReport.getData());
-                    measureResult.setIsAf((int) afReport.getDataValue());
+                    measureResult.setIsAf((int) afReport.getData());
                 }
             }
             if (spo2HReport != null) {
@@ -428,10 +515,25 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
                     measureResult.setbP_TAU((float) riskReport.getData().getBpTau());
                 }
             }
-            if (healthScoreReport != null) {
+            if (calculatedReport != null) {
+                MyLog.e(Constants.TAG, "计算报告=" + calculatedReport);
+                measureResult.setMsi(calculatedReport.getData());
+                if (calculatedReport.getCode() == 80000) {
+                    MyLog.d(Constants.TAG, "计算报告所有指标成功");
+                } else if (calculatedReport.getCode() == 80010) {
+                    MyLog.d(Constants.TAG, "计算报告分数计算失败");
+                } else if (calculatedReport.getCode() == 80020) {
+                    MyLog.d(Constants.TAG, "计算报告心理压力计算失败");
+                } else if (calculatedReport.getCode() == 81000) {
+                    MyLog.d(Constants.TAG, "计算报告全部指标都计算失败");
+                }
                 MyLog.e(Constants.TAG, "总分=" + healthScoreReport.getData());
                 measureResult.setHealthScore(healthScoreReport.getData());
             }
+//            if (healthScoreReport != null) {
+//                MyLog.e(StringConstans.TAG, "总分=" + healthScoreReport.getData());
+//                measureResult.setHealthScore(healthScoreReport.getData());
+//            }
 
 
             MyLog.d(Constants.TAG, "=================血氧仪测量结束====================");
@@ -453,7 +555,13 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
                     .putExtra("healthScore", measureResult.getHealthScore())
                     .putExtra("vascular_capacity", measureResult.getbP_TAU())
                     .putExtra("msi", measureResult.getMsi())
-
+                    .putExtra("emotion", emotionReport.getData())
+                    .putExtra("physiologyScoreReport", physiologyScoreReport.getData())
+                    .putExtra("aggressivityReport", aggressivityReport.getData())
+                    .putExtra("anxietyReport", anxietyReport.getData())
+                    .putExtra("vitalityReport", vitalityReport.getData())
+                    .putExtra("suppressionReport", suppressionReport.getData())
+                    .putExtra("fatigueReport", fatigueReport.getData())
                     .putExtra("gender", essentialReport.getData().getGenderValue())
             );
             SwitchActivity.this.finish();
@@ -463,9 +571,14 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
     }
 
     @Override
-    public void onException(IMeasurementException exception) {
+    public void onException(ExceptionBean exception) {
+        Log.e(Constants.TAG, "onException: " + exception.getMsg_cn() + " level: " + exception.getLevel());
+        if (exception.getLevel().equals( "warning")){
+            runOnUiThread(() -> tv_bottom_note.setText(exception.getMsg_cn()));
+            return;
+        }
         if (isIncomingData) {
-            MyLog.e(Constants.TAG, "onException code:" + exception.getCode() + "  msg:" + exception.getMessage());
+            MyLog.e(Constants.TAG, "  msg:" + exception.getMsg_cn());
             stopMeasurement();
             isIncomingData = false;
 //            camera2Helper.interrupt();
@@ -474,7 +587,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
             }
 
             new XPopup.Builder(SwitchActivity.this).dismissOnTouchOutside(false)
-                    .asConfirm("测量失败", exception.getMessage(), "取消", "确定",
+                    .asConfirm("测量失败", exception.getMsg_cn(), "取消", "确定",
                             new OnConfirmListener() {
                                 @Override
                                 public void onConfirm() {
@@ -492,7 +605,6 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
     public void stopMeasurement() {
         scopeView.onMeasureStop2();
     }
-
 
     @Override
     protected void onResume() {
