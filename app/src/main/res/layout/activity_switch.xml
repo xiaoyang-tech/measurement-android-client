@@ -4,116 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <cn.xymind.measurement_sdk_plugin.view.AutoFitTextureView
         android:id="@+id/texture_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true" />
 
-
     <FrameLayout
         android:id="@+id/rl_identify"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <cn.xymind.healthdetection.synthesis.androidsdksamples.MeasureScopeView2
+        <cn.xymind.measurement_sdk_plugin.view.FaceAreaView
             android:id="@+id/scopeView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <ImageView
-            android:id="@+id/iv_measurement_rotation1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:scaleType="fitStart"
-            android:src="@mipmap/icon_measurement_rotation1"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/iv_measurement_rotation2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:scaleType="fitStart"
-            android:src="@mipmap/icon_measurement_rotation2"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/iv_measurement_rotation3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:scaleType="fitStart"
-            android:src="@mipmap/icon_measurement_rotation3"
-            android:visibility="gone" />
-
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/tv_bottom_note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_bottom_note2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dip"
-        android:text="请保持脸部正对相机"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/tv_bottom_note2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="70dp"
-        android:text="保持人脸在圆框区域"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_3s_count_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_bottom_note"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:textColor="#FFFFFF"
-        android:textSize="25sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/tv_heart_bmp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_bottom_note"
-        android:layout_centerHorizontal="true"
-        android:background="@mipmap/icon_heart"
-        android:gravity="center"
-        android:paddingBottom="6dp"
-        android:text="--"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/testIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/brightnessValueTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/color_red"
-        android:textSize="16dp" />
-
-<!--    <cn.xymind.measurementsample.test.FaceLandmarksOverlayView-->
-<!--        android:id="@+id/face_landmarks"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="300dp" />-->
 </RelativeLayout>

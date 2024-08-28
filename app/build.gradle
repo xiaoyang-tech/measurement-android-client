@@ -6,21 +6,51 @@ android {
     namespace 'cn.xymind.healthdetection.synthesis.androidsdksamples'
     compileSdk 34
 
+    signingConfigs {
+        debug {
+            storeFile file('xydemo.jks')
+            storePassword '123123'
+            keyAlias = 'demo'
+            keyPassword '123123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file('xydemo.jks')
+            storePassword '123123'
+            keyAlias = 'demo'
+            keyPassword '123123'
+            v1SigningEnabled true
+            v2SigningEnabled false
+        }
+    }
+
     defaultConfig {
         applicationId "cn.xymind.healthdetection.synthesis.androidsdksamples"
         minSdk 24
-        targetSdk 29
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        signingConfig signingConfigs.debug
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
             abiFilters "arm64-v8a", "armeabi-v7a", "armeabi"
         }
+
+        sourceSets.main {
+            jni.srcDirs = []
+            jniLibs.srcDir 'libs'
+        }
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -42,7 +72,7 @@ android {
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
@@ -51,8 +81,7 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
-    implementation(files('libs/measurement_sdk_release_v2.0.0Beta.aar'))
-//    implementation 'cn.xymind.measurementsdk:measurement_sdk:v2.0.0Beta'
+    implementation(files('libs/measurement_health_android_v2.0.0_beta0.aar'))
     implementation(files('libs/measurement_sdk_plugin-release.aar'))
 
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
@@ -104,7 +133,4 @@ dependencies {
     implementation ('com.google.mediapipe:tasks-vision:0.10.0'){
         exclude group: 'com.google.protobuf'
     }
-
-    //阿里云日志
-    implementation 'io.github.aliyun-sls:aliyun-log-android-sdk:2.7.0@aar'
 }

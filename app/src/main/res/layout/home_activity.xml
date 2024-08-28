@@ -3,27 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <Button
-        android:id="@+id/otherStartMeasureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:visibility="gone"
-        android:text="开始测量"
-        android:textSize="16dp" />
-
-    <Button
-        android:id="@+id/btn_camera2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:visibility="gone"
-        android:text="开始测量Camera2"
-        android:textSize="16dp" />
-
     <EditText
         android:id="@+id/httpEt"
         android:layout_width="match_parent"
@@ -41,45 +20,4 @@
         android:text="开始测量"
         android:textSize="16dp" />
 
-    <RadioGroup
-        android:id="@+id/rgp_camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rbt_camera1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Camera1" />
-
-        <RadioButton
-            android:id="@+id/rbt_camera2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Camera2" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rgp_measure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rbt_mnn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MNN" />
-
-        <RadioButton
-            android:id="@+id/rbt_mediapipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Mediapipe" />
-    </RadioGroup>
 </LinearLayout>
