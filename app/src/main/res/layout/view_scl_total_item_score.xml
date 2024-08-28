@@ -30,7 +30,7 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <cn.xymind.healthdetection.synthesis.androidsdksamples.ScoreView
+    <cn.xymind.healthdetection.synthesis.androidsdksamples.views.ScoreView
         android:id="@+id/v_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

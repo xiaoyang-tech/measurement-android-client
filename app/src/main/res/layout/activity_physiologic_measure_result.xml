@@ -30,7 +30,7 @@
                     android:layout_marginTop="20dp"
                     android:orientation="vertical">
 
-                    <cn.xymind.healthdetection.synthesis.androidsdksamples.ItemScoreView
+                    <cn.xymind.healthdetection.synthesis.androidsdksamples.views.ItemScoreView
                         android:id="@+id/v_standard_score"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -66,91 +66,91 @@
                         android:layout_weight="7"
                         android:orientation="vertical">
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心率" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_jsyl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心率变异性" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_ssy"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="收缩压" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_szy"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="舒张压" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_tzzs"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="体重指数" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_pfnl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="皮肤年龄" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xggn"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="血管功能" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xzyl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心脏压力" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/calculated"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="精神压力" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xzbfx"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心脏病风险" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_zffx"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="中风风险" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xxgbfx"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心血管病风险" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.SegmentScoreMirrorView
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/spo2Ssmv"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
@@ -202,7 +202,7 @@
                                     android:textSize="16sp" />
 
 
-                                <cn.xymind.healthdetection.synthesis.androidsdksamples.IndicatorMirrorView
+                                <cn.xymind.healthdetection.synthesis.androidsdksamples.views.IndicatorMirrorView
                                     android:id="@+id/Idv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="50dp"

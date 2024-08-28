@@ -42,7 +42,7 @@
             android:text="指标" />
 
 
-        <cn.xymind.healthdetection.synthesis.androidsdksamples.IndicatorMirrorView
+        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.IndicatorMirrorView
             android:id="@+id/Idv"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

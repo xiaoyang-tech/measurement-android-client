@@ -2,14 +2,9 @@ package cn.xymind.healthdetection.synthesis.androidsdksamples.app;
 
 import android.app.Application;
 
-import com.tencent.mmkv.MMKV;
-
-
-import cn.xiaoyang.measurement.abstraction.Category;
 import cn.xymind.measurementsdk.config.IMeasurementConfig;
 import cn.xymind.measurementsdk.config.MeasurementConfig;
-import cn.xymind.measurementsdk.enums.ServiceType;
-import cn.xymind.measurementsdk.facelandmarker.FaceLandmarkerHelper;
+import cn.xymind.measurementsdk.facelandmarker.FeatureExtractor;
 import cn.xymind.measurementsdk.facelandmarker.InitCallback;
 import cn.xymind.measurementsdk.util.Constants;
 import cn.xymind.measurementsdk.util.MyLog;
@@ -17,24 +12,22 @@ import cn.xymind.measurementsdk.util.MyLog;
 public class DemoApp extends Application {
 
     public static IMeasurementConfig config;
-    public static FaceLandmarkerHelper faceLandmarkerHelper = null;
+    public static FeatureExtractor featureExtractor = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        config = new MeasurementConfig(getApplicationContext(), "id", "key", ServiceType.PUBLIC.getValue());
-        config.setMinMeasurementDuration(15000);
-        config.setMinFramesCnt(257);
-        config.setMeasurementCategory(Category.MeasurementCategory.All);
+        config = new MeasurementConfig(getApplicationContext(), "APP_ID", "SDK_KEY");
+        config.setMeasurementDuration(15000);
 
-        initFace();
+        preload();
     }
 
-    private void initFace() {
+    private void preload() {
         new Thread(() -> {
             try {
-                DemoApp.faceLandmarkerHelper = new FaceLandmarkerHelper(this, new InitCallback() {
+                DemoApp.featureExtractor = new FeatureExtractor(this, new InitCallback() {
                     @Override
                     public void onInitialized() {
 
@@ -51,6 +44,5 @@ public class DemoApp extends Application {
                 MyLog.e(Constants.TAG, "Mediapipe 初始化失败" + e.getMessage());
             }
         }).start();
-
     }
 }
