@@ -2,15 +2,19 @@ package cn.xymind.healthdetection.synthesis.androidsdksamples.ui;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final int APPLY_PERMISSION = 1000;
 
     private EditText httpEt;
+    private Dialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_activity);
         InitView();
         InitData();
+
+        // 显示loading加载框
+        showLoadingDialog();
     }
 
     private void InitView() {
@@ -123,5 +131,29 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    private void showLoadingDialog() {
+        loadingDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        loadingDialog.setContentView(R.layout.loading_dialog); // 假设你有一个loading_dialog.xml布局文件
+        loadingDialog.setCancelable(false); // 点击所有区域无法取消
+
+        // 设置全屏
+        Window window = loadingDialog.getWindow();
+        if (window != null) {
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
+        loadingDialog.show();
+
+        // 5秒后自动消失
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (loadingDialog != null && loadingDialog.isShowing()) {
+                    loadingDialog.dismiss();
+                }
+            }
+        }, 5000);
     }
 }
