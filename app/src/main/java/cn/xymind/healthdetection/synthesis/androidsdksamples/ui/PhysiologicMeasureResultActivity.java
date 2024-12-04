@@ -35,7 +35,7 @@ public class PhysiologicMeasureResultActivity extends AppCompatActivity {
     private ImageView isAfIv;
 
     private TextView atrialFibrillationTv;
-
+    private TextView tv_emotion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class PhysiologicMeasureResultActivity extends AppCompatActivity {
         calculated = findViewById(R.id.calculated);
         isAfIv = findViewById(R.id.isAfIv);
         atrialFibrillationTv = findViewById(R.id.atrialFibrillationTv);
-
+        tv_emotion = findViewById(R.id.tv_emotion);
     }
 
     private void initData() {
@@ -83,6 +83,24 @@ public class PhysiologicMeasureResultActivity extends AppCompatActivity {
         double vascular_capacity = getIntent().getFloatExtra("vascular_capacity", 0);
         double healthScore = getIntent().getDoubleExtra("healthScore", 0);
         double msi = getIntent().getDoubleExtra("msi", 0);
+        double emotion = getIntent().getDoubleExtra("emotion", 0);
+
+        double physiologyScoreReport = getIntent().getDoubleExtra("physiologyScoreReport", 0);
+        double aggressivityReport = getIntent().getDoubleExtra("aggressivityReport", 0);
+        double anxietyReport = getIntent().getDoubleExtra("anxietyReport", 0);
+        double vitalityReport = getIntent().getDoubleExtra("vitalityReport", 0);
+        double suppressionReport = getIntent().getDoubleExtra("suppressionReport", 0);
+        double fatigueReport = getIntent().getDoubleExtra("fatigueReport", 0);
+        int gender = getIntent().getIntExtra("gender", 0);
+        //情绪
+        tv_emotion.setText("情绪指数：" + ValueUtil.doubleToString(emotion)
+                + "\r\n攻击性:" + ValueUtil.doubleToString(aggressivityReport)
+                + "\r\n性  别:" + (gender == 0 ? "男" : "女")
+                + "\r\n焦虑度:" + ValueUtil.doubleToString(anxietyReport)
+                + "\r\n活力度:" + ValueUtil.doubleToString(vitalityReport)
+                + "\r\n抑郁度:" + ValueUtil.doubleToString(suppressionReport)
+                + "\r\n疲劳度:" + ValueUtil.doubleToString(fatigueReport)
+        );
 
         //房颤
         isAfIv.setImageResource(R.mipmap.icon_xinlv);
