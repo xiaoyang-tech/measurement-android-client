@@ -81,7 +81,7 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
-    implementation(files('libs/measurement_health_android_v2.0.0_beta0.aar'))
+    implementation(files('libs/measurement_health_android_v2.2.0_beta0.aar'))
     implementation(files('libs/measurement_sdk_plugin-release.aar'))
 
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
