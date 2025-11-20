@@ -210,7 +210,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         runOnUiThread(() -> {
             progressDialog.setMessage("请稍候，我们正在努力为您计算中......");
             progressDialog.show();
-            MyLog.d(TAG, "摄像头参数：" + cameraStrategy.getOption());
+//            MyLog.d(TAG, "摄像头参数：" + cameraStrategy.getOption());
         });
     }
 

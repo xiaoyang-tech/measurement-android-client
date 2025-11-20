@@ -35,7 +35,7 @@ public class PhysiologicMeasureResultActivity extends AppCompatActivity {
     private ImageView isAfIv;
 
     private TextView atrialFibrillationTv;
-    private TextView tv_emotion;
+//    private TextView tv_emotion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

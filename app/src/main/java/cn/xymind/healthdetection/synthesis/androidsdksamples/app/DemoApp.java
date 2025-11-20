@@ -31,13 +31,13 @@ public class DemoApp extends Application {
                     @Override
                     public void onInitialized() {
 
-                        MyLog.d(Constants.TAG, "Mediapipe 初始化成功");
+                        MyLog.d(cn.xymind.measurementsdk.util.Constants.TAG, "Mediapipe 初始化成功");
 
                     }
 
                     @Override
                     public void onError(Exception e) {
-                        MyLog.d(Constants.TAG, "Mediapipe 初始化失败");
+                        MyLog.d(cn.xymind.measurementsdk.util.Constants.TAG, "Mediapipe 初始化失败");
                     }
                 });
             } catch (Exception e) {
