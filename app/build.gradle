@@ -3,6 +3,11 @@ plugins {
 }
 
 android {
+
+    aaptOptions {
+        noCompress "tflite"  // 防止模型文件被压缩
+    }
+
     namespace 'cn.xymind.healthdetection.synthesis.androidsdksamples'
     compileSdk 34
 
@@ -57,8 +62,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     packagingOptions {
@@ -68,6 +73,7 @@ android {
         resources {
             excludes += ['META-INF/DEPENDENCIES', 'META-INF/library_release.kotlin_module']
         }
+        pickFirst '**/*.so'  // 解决 native 库冲突
     }
 }
 

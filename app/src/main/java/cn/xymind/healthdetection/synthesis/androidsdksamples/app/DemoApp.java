@@ -2,6 +2,7 @@ package cn.xymind.healthdetection.synthesis.androidsdksamples.app;
 
 import android.app.Application;
 
+import cn.xiaoyang.measurement.abstraction.Category;
 import cn.xymind.measurementsdk.config.IMeasurementConfig;
 import cn.xymind.measurementsdk.config.MeasurementConfig;
 import cn.xymind.measurementsdk.facelandmarker.FeatureExtractor;
@@ -18,9 +19,8 @@ public class DemoApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        config = new MeasurementConfig(getApplicationContext(), "APP_ID", "SDK_KEY");
+        config = new MeasurementConfig(getApplicationContext(), "3a19c03d822a3967ca511e966e677af2", "3a19c03d822aedbecc778214106b614d");
         config.setMeasurementDuration(15000);
-
         preload();
     }
 

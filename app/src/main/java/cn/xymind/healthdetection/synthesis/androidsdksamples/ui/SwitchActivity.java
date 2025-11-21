@@ -87,7 +87,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
 
     private void initMeasurement() {
 
-        cameraStrategy = new MeasurementCamera2(this, texture_view);
+        cameraStrategy = new MeasurementCamera2(this, texture_view,true);
         cameraStrategy.setSize(640, 480);
         cameraStrategy.setFrameListener(this);
 
@@ -210,7 +210,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
         runOnUiThread(() -> {
             progressDialog.setMessage("请稍候，我们正在努力为您计算中......");
             progressDialog.show();
-            MyLog.d(TAG, "摄像头参数：" + cameraStrategy.getOption());
+//            MyLog.d(TAG, "摄像头参数：" + cameraStrategy.getOption());
         });
     }
 
@@ -229,7 +229,7 @@ public class SwitchActivity extends AppCompatActivity implements IMeasurementLis
             MeasurementReport.SingleValueReport afReport = measurementReport.getAfReport();
             MeasurementReport.SingleValueReport spo2HReport = measurementReport.getSpo2HReport();
             MeasurementReport.BpReport bpReport = measurementReport.getBpReport();
-            MeasurementReport.EssentialReport essentialReport = measurementReport.getEssentialReport();
+            MeasurementReport.EssentialReport essentialReport = measurementReport.getEssentialReport(); //基本信息
             MeasurementReport.RiskReport riskReport = measurementReport.getRiskReport();
             MeasurementReport.SingleValueReport healthScoreReport = measurementReport.getPhysiologyScoreReport();
 

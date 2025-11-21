@@ -1,27 +1,51 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
-        jcenter()
-        maven { url "https://jitpack.io" }
-        mavenCentral()
         gradlePluginPortal()
+        google()
+        mavenCentral()
+        jcenter()
+//        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+
+        maven {
+            url "https://maven.aliyun.com/nexus/content/repositories/releases/"
+        }
+
+
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        flatDir {
+            dirs 'libs'
+        }
+
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        jcenter()
-        maven { url "https://jitpack.io" }
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven {
+            url "https://maven.aliyun.com/nexus/content/repositories/releases/"
+        }
+        maven { url 'https://jitpack.io' }
+//        maven { url 'https://repo1.maven.org/maven2/' }
+        flatDir {
+            dirs 'libs'
+        }
+
     }
 }
-
-rootProject.name = "AndroidSdkSamples"
+rootProject.name = "TbjApp"
 include ':app'
+
+include ':netword'
+include ':commonui'
+include ':common_utils'
+include ':mylibrary'
+include ':Arcadegame'

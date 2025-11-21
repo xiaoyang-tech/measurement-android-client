@@ -66,6 +66,13 @@
                         android:layout_weight="7"
                         android:orientation="vertical">
 
+<!--                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView-->
+<!--                            android:id="@+id/gender"-->
+<!--                            style="@style/measure_result_mirror"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_margin="7dp"-->
+<!--                            app:left_title="性别" />-->
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xl"
                             style="@style/measure_result_mirror"
@@ -73,26 +80,72 @@
                             android:layout_margin="7dp"
                             app:left_title="心率" />
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
-                            android:id="@+id/v_jsyl"
-                            style="@style/measure_result_mirror"
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container"
                             android:layout_width="match_parent"
-                            android:layout_margin="7dp"
-                            app:left_title="心率变异性" />
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
-                            android:id="@+id/v_ssy"
-                            style="@style/measure_result_mirror"
-                            android:layout_width="match_parent"
-                            android:layout_margin="7dp"
-                            app:left_title="收缩压" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
 
-                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
-                            android:id="@+id/v_szy"
-                            style="@style/measure_result_mirror"
-                            android:layout_width="match_parent"
-                            android:layout_margin="7dp"
-                            app:left_title="舒张压" />
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content"/>
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+<!--                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView-->
+<!--                            android:id="@+id/v_ssy"-->
+<!--                            style="@style/measure_result_mirror"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_margin="7dp"-->
+<!--                            app:left_title="收缩压" />-->
+
+<!--                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView-->
+<!--                            android:id="@+id/v_szy"-->
+<!--                            style="@style/measure_result_mirror"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_margin="7dp"-->
+<!--                            app:left_title="舒张压" />-->
 
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_tzzs"
@@ -101,12 +154,118 @@
                             android:layout_margin="7dp"
                             app:left_title="体重指数" />
 
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content3" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_pfnl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="皮肤年龄" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content4" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xggn"
@@ -115,12 +274,200 @@
                             android:layout_margin="7dp"
                             app:left_title="血管功能" />
 
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content5" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xzyl"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心脏压力" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content6" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/v_jsyl"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="心率变异性" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content2" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:background="#EBEFF2" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:paddingLeft="18dp"
+                                android:paddingRight="18dp"
+                                android:text="情绪指标"
+                                android:textColor="#ff4d4d4d"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
 
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/calculated"
@@ -129,12 +476,512 @@
                             android:layout_margin="7dp"
                             app:left_title="精神压力" />
 
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content7" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/emotionScore"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="情绪指数" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content8" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/aggressivity"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="攻击性" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content9" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/anxiety"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="焦虑度" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content10" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/vitality"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="活力度" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content11"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content11" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/suppression"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="抑郁度" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content12"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content12" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
+                            android:id="@+id/fatigue"
+                            style="@style/measure_result_mirror"
+                            android:layout_width="match_parent"
+                            android:layout_margin="7dp"
+                            app:left_title="疲劳度" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content13"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content13" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_emotion"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_margin="7dp"-->
+<!--                            android:background="@drawable/shape_round_rectangle_background3"-->
+<!--                            android:padding="12dp"-->
+<!--                            android:text="情绪指数：良好"-->
+<!--                            android:textColor="#2E2E2E"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textStyle="bold" />-->
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:background="#EBEFF2" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:paddingLeft="18dp"
+                                android:paddingRight="18dp"
+                                android:text="风险报告"
+                                android:textColor="#ff4d4d4d"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xzbfx"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="心脏病风险" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content14"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content14" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_zffx"
@@ -143,6 +990,59 @@
                             android:layout_margin="7dp"
                             app:left_title="中风风险" />
 
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content15"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content15" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/v_xxgbfx"
                             style="@style/measure_result_mirror"
@@ -150,12 +1050,118 @@
                             android:layout_margin="7dp"
                             app:left_title="心血管病风险" />
 
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content16" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                         <cn.xymind.healthdetection.synthesis.androidsdksamples.views.SegmentScoreMirrorView
                             android:id="@+id/spo2Ssmv"
                             style="@style/measure_result_mirror"
                             android:layout_width="match_parent"
                             android:layout_margin="7dp"
                             app:left_title="血氧含量" />
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title17"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content17"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content17" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle17"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -201,7 +1207,6 @@
                                     android:textColor="#2E2E2E"
                                     android:textSize="16sp" />
 
-
                                 <cn.xymind.healthdetection.synthesis.androidsdksamples.views.IndicatorMirrorView
                                     android:id="@+id/Idv"
                                     android:layout_width="wrap_content"
@@ -213,6 +1218,59 @@
                             </LinearLayout>
 
                         </LinearLayout>
+
+                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_container18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            card_view:cardCornerRadius="8dp"
+                            card_view:cardElevation="4dp"
+                            android:background="#FFFFFF">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- 概念解释标题栏 -->
+                                <TextView
+                                    android:id="@+id/title18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="概念解释"
+                                    android:textColor="#333333"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="#E8F0FE"
+                                    android:padding="6dp" />
+
+                                <!-- 正文内容 -->
+                                <TextView
+                                    android:id="@+id/content18"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#444444"
+                                    android:textSize="14sp"
+                                    android:lineSpacingExtra="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:maxLines="3"
+                                    android:ellipsize="end"
+                                    android:text="@string/heart_rate_content18" />
+
+                                <!-- 展开收起按钮 -->
+                                <TextView
+                                    android:id="@+id/expand_toggle18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="...展开"
+                                    android:textColor="#1A73E8"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                     </LinearLayout>
 
