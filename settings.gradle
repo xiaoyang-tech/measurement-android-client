@@ -11,15 +11,19 @@ pluginManagement {
         maven { url "https://jitpack.io" }
         mavenCentral()
         gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
+//        google()
         jcenter()
         maven { url "https://jitpack.io" }
-        mavenCentral()
+//        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
     }
 }
 
